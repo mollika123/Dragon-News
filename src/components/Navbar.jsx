@@ -1,10 +1,18 @@
-import { montserrat } from '@/app/layout';
+"use client"
+import { montserrat } from "../app/fonts";
 import Link from 'next/link';
-import React from 'react';
+
 import avatar from '../assets/user.png'
 import Image from 'next/image';
 import NavLink from './NavLink';
+import { authClient } from '@/lib/auth-client';
+import { userAc } from "better-auth/plugins/admin/access";
 const Navbar = () => {
+  
+  const { data: session,isPending} = authClient.useSession();
+
+  const user = session?.user;
+  console.log("session",session);
   return (
     <div className='flex justify-between w-11/12 mx-auto py-9'>
       <div></div>
@@ -21,10 +29,12 @@ const Navbar = () => {
       
       </ul>
 
-      <div className='flex justify-between items-center gap-2'>
-        <Image src={avatar} width={60} height={60} alt="user"></Image>
-        <button className='btn btn-active'><Link href={'/login'}>Login</Link></button>
-      </div>
+    {isPending?(<span className="loading loading-bars loading-xl"></span>) :user?  <div className='flex justify-between items-center gap-2'>
+        <h2>Hello,{user.name }</h2>
+        <Image src={user?.image||avatar} width={60} height={60} alt="user"></Image><button className='btn btn-active' onClick={async()=>await authClient.signOut()}>Logout</button>
+        
+      </div>:<button className='btn btn-active'><Link href={'/login'}>Login</Link></button>}
+      
     </div>
   );
 };
