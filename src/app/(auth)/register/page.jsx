@@ -72,7 +72,7 @@ console.log(watch("password"));
         </form>
 
         <p className="pt-4">Don't have an account ?</p>
-        <Link href={'/register'} className="text-blue-500 font-semibold">Register</Link>
+        <Link href={'/register'} className="text-blue-600 font-semibold">Register</Link>
       </div>
     
     </div>
