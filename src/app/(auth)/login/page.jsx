@@ -9,7 +9,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 const LoginPage = () => {
 
   const { register,
-    handleSubmit,watch, formState: { errors } } = useForm();
+    handleSubmit, formState: { errors } } = useForm();
 
   const [isShowPassword, setIsShowPassword] = useState(false);
   const handleLoginFunc =async (data) => {
