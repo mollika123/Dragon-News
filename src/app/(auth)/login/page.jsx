@@ -13,7 +13,7 @@ const LoginPage = () => {
 
   const [isShowPassword, setIsShowPassword] = useState(false);
   const handleLoginFunc =async (data) => {
-    console.log(data, "data");
+    // console.log(data, "data");
     
     const { data:res, error } = await authClient.signIn.email({
     email: data.email, // required
@@ -24,7 +24,7 @@ const LoginPage = () => {
     console.log(res,error);
 }
 
-console.log(watch("password"));
+
 
 
   return (
@@ -44,7 +44,7 @@ console.log(watch("password"));
           <fieldset className="fieldset relative">
   <legend className="fieldset-legend">Password</legend>
   <input type={isShowPassword?"text":"password"}  className="input" placeholder="Type here password" {...register("password", { required: "Password field is required" })}/>
-            <span className="absolute right-1 top-4 " onClick={() => setIsShowPassword(!isShowPassword)}>{isShowPassword?<FaEye></FaEye>:<FaEyeSlash></FaEyeSlash>}</span>
+            <span className="absolute right-1 top-4 cursor-poi" onClick={() => setIsShowPassword(!isShowPassword)}>{isShowPassword?<FaEye></FaEye>:<FaEyeSlash></FaEyeSlash>}</span>
             {errors.password && <p className="text-red-500">{errors.password.message }</p>}
           </fieldset>
           <button className="btn w-full bg-slate-800 text-white rounded-md">Login</button>
