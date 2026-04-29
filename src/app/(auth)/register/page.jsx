@@ -43,7 +43,7 @@ console.log(watch("password"));
         <h2 className="font-bold text-3xl text-center">
         Register your Account
         </h2>
-        <form className="space-y-4" onSubmit={handleSubmit(handleRegisterFunc)}>
+        <form className="space-y-3" onSubmit={handleSubmit(handleRegisterFunc)}>
           <fieldset className="fieldset">
   <legend className="fieldset-legend">Your Name</legend>
             <input type="text" className="input" placeholder="Enter You Name"  {...register("name", { required: "Name field is required" })} />
